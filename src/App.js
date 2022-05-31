@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react'
 
-function App() {
+import style from './styles/style.css'
+import Navbar from './components/navbar';
+import HomeFeed from './components/homefeed';
+import UploadImage from './components/uploadimage';
+
+function App(props) {
+  const [uploadImageModal, setUploadImageModal] = useState(false)
+
+  function loadUploadImageModal() {
+    // open the modal for uploading an image
+    console.log("Uploading image from app")
+    setUploadImageModal(true)
+  }
+
+  function closeUploadImageModal() {
+    setUploadImageModal(false)
+  }
+
+  useEffect(() => {
+
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar appFunctions={[loadUploadImageModal]}/>
+      <hr />
+      <HomeFeed />
+      {uploadImageModal
+      ? <UploadImage appFunctions={[closeUploadImageModal]}/>
+      : <span></span>
+      }
     </div>
   );
 }

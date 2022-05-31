@@ -1,0 +1,116 @@
+p, input {
+    margin: 0px;
+}
+
+svg:hover {
+    color: grey;
+}
+.upload-image {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(50,50,50,0.95);
+}
+
+.upload-image-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    width: 400px;
+    height: 450px;
+    background-color: rgb(241, 239, 239);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.upload-image-form > p {
+    position: relative;
+    font-size: 20px;
+    top: 180px;
+    color: grey;
+    left: 5px;
+    margin:0px;
+}
+
+.upload-image-modal-close {
+    position: absolute;
+    color: white;
+    background-color:rgba(0,0,0,0);
+    border: 0px;
+    font-size: 28px;
+    top: 30px;
+    right: 30px;
+}
+
+.upload-image-modal-close:hover {
+    color: rgb(220,220,220);
+    /* color:green; */
+}
+/* .upload-image- */
+.upload-image-navbar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px;
+}
+
+
+.edit {
+    height: auto;
+}
+
+.edit-image-footer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0px;
+} 
+
+.edit-image-footer > svg {
+    margin: 10px;
+}
+
+.left {
+    margin-left: 50px;
+}
+
+.right {
+    margin-right: 50px;
+}
+
+.upload-image-form > svg {
+    position: relative;
+    /* margin-top: 50px; */
+    top: 100px;
+}
+
+.upload-image-form > img {
+    border-radius: 15px;
+    /* width: 470px; */
+}
+
+.image-upload {
+    position: relative;
+    font-size: 20px;
+    width: 220px;
+    text-align: center;
+    background-color: #0095f6;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    top: 200px;
+    left: 90px;
+}
+
+.image-upload:hover {
+    background-color:#0080d5
+}
+
+input[type="file"] {
+    display: none;
+}

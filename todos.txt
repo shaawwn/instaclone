@@ -1,0 +1,17 @@
+todo functions
+
+Add data functions
+    add user data
+    add post 
+    add followers
+
+Update Data functions
+    update user data
+    follow another user
+
+get data functions
+    get user data
+        get followers
+        get posts
+        get comments
+        get likes

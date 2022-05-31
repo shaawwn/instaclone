@@ -1,0 +1,45 @@
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: rgb(245,245,245);
+    padding: 10px;
+}
+
+.search-box {
+    display:flex;
+}
+
+.search-input {
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 1.5em;
+    border-radius: 10px;
+    background-color: rgb(220,220,220);
+    font-size: 24px;
+    /* content: "\f002"; */
+}
+
+.navbar > p {
+    font-family: "blackjack";
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.navbar > hr {
+    width: 100%;
+    height: 1px;
+}
+
+.navbar-icons-container {
+    /* padding-left: 100px; */
+    /* padding-right: 100px; */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar-icons-container > svg {
+    margin-left: 15px;
+}
