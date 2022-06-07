@@ -10,6 +10,7 @@ import { createUser, updateUserData, addFollower,
         getFollowers,addPost, uploadImage } from './data/setdata.js';
 // Firebase
 import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 import {getFirestore, collection, query, getDocs, getDoc, updateDoc, setDoc, doc} from 'firebase/firestore';
 
 // Firebase config
@@ -28,7 +29,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // Firebase db object
 const db = getFirestore(app);
+const auth = getAuth(app)
+console.log("Auth:", auth)
 
+const fireBaseDependencies = [
+  firebaseConfig, app, root, db
+]
 const testUserData = {
   id: '1', // autogenerate probably in the future
   username: 'Shawn',
@@ -77,7 +83,7 @@ userObject.then(
 root.render(
   <React.StrictMode>
     {/* <App firebase={app} followers={followers}/> */}
-    <RouteSwitch />
+    <RouteSwitch firebaseDependencies={fireBaseDependencies}/>
   </React.StrictMode>
 );
 

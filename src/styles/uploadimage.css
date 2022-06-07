@@ -1,6 +1,21 @@
-p, input {
+
+p, input, hr {
     margin: 0px;
 }
+
+textarea {
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-family: inherit;
+    width: 90%;
+    height: 275px;
+    border-radius: 10px;
+    /* font-family:'Courier New', Courier, monospace; */
+}
+
+
 
 svg:hover {
     color: grey;
@@ -17,7 +32,6 @@ svg:hover {
     position: relative;
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-start; */
     width: 400px;
     height: 450px;
     background-color: rgb(241, 239, 239);
@@ -49,9 +63,8 @@ svg:hover {
 
 .upload-image-modal-close:hover {
     color: rgb(220,220,220);
-    /* color:green; */
 }
-/* .upload-image- */
+
 .upload-image-navbar {
     display: flex;
     justify-content: space-between;
@@ -85,13 +98,11 @@ svg:hover {
 
 .upload-image-form > svg {
     position: relative;
-    /* margin-top: 50px; */
     top: 100px;
 }
 
 .upload-image-form > img {
     border-radius: 15px;
-    /* width: 470px; */
 }
 
 .image-upload {
@@ -113,4 +124,60 @@ svg:hover {
 
 input[type="file"] {
     display: none;
+}
+
+/* Submission form */
+
+.submission-form-modal {
+    width: 688px;
+    background-color: white; 
+    border-radius: 20px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.preview-submission-container {
+    display: flex;
+    justify-content: between;
+    margin-top: 0px;
+}
+
+.preview-submission-container > img {
+    width: 344px;
+    margin: 5px;
+
+}
+
+.vert-line {
+    border-left: 1px solid grey;
+    /* height:100px; */
+}
+
+.username-profile {
+    display: flex;
+}
+
+.username-profile > p {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.submission-form {
+    width: 50%;
+    height: 100%;
+    /* background-color: red; */
+}
+.submission-form > hr {
+    width: 100%;
+    /* color:red; */
+}
+
+.emoji-select {
+    width: 80%;
+    outline: none;
+    border:none;
+    height: 100%;
 }

@@ -21,11 +21,17 @@
     /* content: "\f002"; */
 }
 
-.navbar > p {
+.navbar-title{
     font-family: "blackjack";
     font-size: 36px;
     font-weight: bold;
     margin: 0px;
+    text-decoration: none;
+}
+
+.navbar-title:visited, .navbar-title:hover, .navbar-title:active {
+    text-decoration:none;
+    color: inherit;   
 }
 
 .navbar > hr {
@@ -42,4 +48,10 @@
 
 .navbar-icons-container > svg {
     margin-left: 15px;
+}
+
+/* For not changing style when an icon is clicked */
+.icon-link, .icon-link:visited {
+    text-decoration:none;
+    color:inherit
 }

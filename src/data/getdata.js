@@ -29,6 +29,17 @@ async function getUserObject(userId, collection, db) {
     }
 }
 
+async function getPostObject(postId, collection, db) {
+  console.log("Loading post object data...")
+  const postRef = doc(db, collection, postId)
+  const docSnap = await getDoc(postRef)
+
+  if (docSnap.exists()) {
+    return await docSnap.data()
+  } else{
+    console.log("No such post")
+  }
+}
 
 const testData = {
   user: "Shawn",
@@ -61,4 +72,4 @@ async function setData(dataObject, db) {
 //   console.log(gameData[object])
 //   addObject(gameData[object], object)
 // })
-export { getData, getUserObject, test }
+export { getData, getUserObject, getPostObject, test }

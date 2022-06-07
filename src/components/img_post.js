@@ -1,6 +1,7 @@
 // Component for displaying User psots
 import { useState, useEffect} from 'react'
 import style from '../styles/post.css';
+import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import SpaceStation from '../images/spacestation.png';
 import Julio from '../images/jrod.jpeg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -19,10 +20,23 @@ function ImagePost(props) {
     const [saved, setSaved] = useState(false)
     const [multiple, setMultiple] = useState(true)
     const [numImages, setNumImages] = useState(2)
+    const [image, setImage] = useState()
+
+    function getImage() {
+        // download/link to image
+        // console.log("Getting image....")
+        const storage = getStorage()
+        const imageRef = ref(storage,'/images/1/odlaw.png' ) // JUST TEST IMAGE, NEED TO DYNAMICALLY LINK TO IMAGES
+        
+        getDownloadURL(imageRef).then((url) => {
+            // console.log("URL:", url)
+            setImage(url)
+        })
+    }
 
     useEffect(() => {
-        // TODO 
-    }, [])
+        getImage() // load image upon mounting
+    }, [image])
 
     return(
         <div className="image-post">
@@ -32,7 +46,8 @@ function ImagePost(props) {
                 <FontAwesomeIcon icon={faEllipsis} />
             </div>
             <div className="image-post-image">
-                <img alt="spacestation" src={SpaceStation} />
+                {/* <img alt="spacestation" src={SpaceStation} />   keeping just in cas*/}
+                <img alt="odlaw" src={image} />
             </div>
             <div className="image-post-footer">
                 <div className="like-comment-send-icons">

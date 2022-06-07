@@ -5,7 +5,7 @@ function Register(props) {
     // Users can create new accounts here
     return(
         <div className="Register">
-            <RegisterBox />
+            <RegisterBox firebaseDependencies={props.firebaseDependencies} signin={props.signin}/>
             <GetAppsBox />
         </div>
     )

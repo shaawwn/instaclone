@@ -5,7 +5,8 @@ function HomeFeed(props) {
     return(
         <div className="home-feed">
             <h1>Home feed here</h1>
-            <ImagePost />
+            <ImagePost /> 
+            {/* Set up dynamic image posts from users that user is following */}
         </div>
     )
 }

@@ -6,7 +6,7 @@ function Login(props) {
     // Login page, which acts as instaclone home if user is not logged in
     return(
         <div className="Login">
-            <LoginBox />
+            <LoginBox firebaseDependencies={props.firebaseDependencies} signin={props.signin}/>
             <GetAppsBox />
         </div>
     )

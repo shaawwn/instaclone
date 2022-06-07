@@ -1,0 +1,145 @@
+.profile-user-info {
+    /* display: flex; */
+    background-color: rgb(245,245,245);
+    padding:10px;
+}
+
+hr {
+    color: rgb(240,240,240);
+}
+.profile-picture-details {
+    display: flex;
+    /* flex-direction:column; */
+}
+
+.account-details-container {
+    display:flex;
+    flex-direction: column;
+}
+.profile-picture {
+    width: 77px;
+    height: 77px;
+    border-radius: 50px;
+    margin: 10px;
+}
+
+.profile-username {
+    display: flex;
+    /* flex-direction: column; */
+    margin-bottom: 15px;
+}
+
+.profile-username > p{
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 32p;
+    margin-right: 20px;
+}
+
+.fa-ellipsis {
+    margin-top: auto;
+    margin-bottom: auto;
+    /* font-weight:  */
+}
+
+.account-interaction {
+    display: flex;
+}
+
+.account-interaction > div {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.profile-button {
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 5px;
+    /* padding-top: 3px; */
+    /* padding-bottom: 3px; */
+    /* padding-right: 30px; */
+    /* padding-left: 30px; */
+    padding: 3px 30px 3px 30px;
+}
+
+.profile-button.following {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.profile-button.options {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.shared-followers {
+    display: flex;
+}
+
+.shared-followers > p {
+    font-size: 13px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.bold-text {
+    color: rgb(38,38,38);
+    margin-left: 2px;
+    margin-right: 2px;
+    font-weight: 500;
+}
+
+.light-text {
+    color: rgb(142,142,142);
+}
+
+.post-followers-following {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.post-followers-following > div {
+    display: flex;
+    flex-direction: column;
+    text-align:center;
+}
+
+.post-followers-following > div > p {
+    font-weight: 500;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.posts-header {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* text-align: center; */
+}
+
+.posts-header > svg {
+    margin-left: 95px;
+    margin-right: 95px;
+}
+
+.posts-container {
+    /* display: flex; */
+    /* justify-content: center; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.post-preview {
+    width: 293px;
+    height: 293px;
+    justify-self: center;
+    /* margin: 20px; */
+    margin-bottom: 20px;
+}
+
+.post-preview > img {
+    width: 293px;
+    height: auto;
+}

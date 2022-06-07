@@ -1,6 +1,7 @@
 import {getFirestore, collection, query, getDocs, getDoc, updateDoc, setDoc, doc} from 'firebase/firestore';
-import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { getData, getUserObject } from './getdata.js'
+import { uniqid } from 'uniqid';
 // import { file } from 'file';
 const testData = {
     user: "Shawn",
@@ -36,22 +37,24 @@ const testCommentData = {
 }
 
 // Users, posts, comments
-async function createUser(db, collection, dataObject) {
+async function createUserAccountObject(db, collection, userID, fullname, username) {
     // userData as new user data object {username, posts, comments, likedPosts, followers, following}
     // db as firestore database to write data to
-    await setDoc(doc(db, collection, dataObject['id']), { // (database, collection, document)
-            id: dataObject['id'],
-            username: dataObject['username'],
-            password: 'password', // CHANGE LATER
-            posts: dataObject['posts'],
-            followers: dataObject['followers'], // array of followers user references
-            following: dataObject['following'] // array of following user references
+    await setDoc(doc(db, collection, userID), { // (database, collection, document)
+            id: userID, // id needs to be the user.uid
+            username: username, // username maybe 
+            fullname: fullname,
+            // password: 'password', // no need password since it is stored in firebase user object
+            posts: [],
+            followers: [], // array of followers user references
+            following: [] // array of following user references
     })
 }
 
 async function updateUserData(db, collection, dataObject, fieldToUpdate, toUpdateValue) {
     // update document in firestore db
     // db.collection(collectionName).doc(doc.title).update({toUpdate: newValue})
+    // needs to access the user Object, which means need the UID?
     const docRef = doc(db, collection, dataObject['username'])
     await updateDoc(docRef, {
         [fieldToUpdate]: toUpdateValue
@@ -99,6 +102,34 @@ async function addPost(db, collection, userDataObject, post) {
         }
     )
 }
+
+async function createPost(db, collection, userDataObject, post) {
+    // create a post object/document to add to database, as well as update
+    // users POSTS with the new post unique ID
+    console.log("Creating post and updating user posts data")
+    // console.log("DB:", db, "COL:", collection, "USER:", userDataObject, "POST:", post)
+    // submit POST to database under 'posts' collection
+    await setDoc(doc(db, collection, post['id']), {
+        id: post['id'],
+        imageURL: post['imageURL'],
+        data: post['data']
+    })
+
+    // UPDATE user object posts to include postID as id of post
+    userDataObject.then(
+        data => {
+            // console.log(data)
+            const userRef = doc(db, 'users', data['id'])
+
+            data.posts.push(post['id'])
+            // console.log(post)
+            updateDoc(userRef, {
+                [collection]: data.posts
+            })
+        }
+    )
+
+}
 async function getFollowers(db, collection, userDataObject, followers) {
     // return an array of followers data for a user
     getUserObject(userDataObject['id'], 'users', db).then(
@@ -108,20 +139,23 @@ async function getFollowers(db, collection, userDataObject, followers) {
     )
 }
 
-async function uploadImage(imageUrl) {
-    // upload an image to firestore db
-    const storage = getStorage()
-    const img = new Image()
-    img.src = imageUrl
-    // console.log(img)
-    const imageRef = ref(storage, imageUrl)
-    // console.log(imageRef.name, imageRef.fullPath)
-    const file = new File([], imageRef.name)
-    // console.log(file)
-    // uploadBytes(imageRef, file).then((snapshot) => {
-    //     console.log("Uploaded image!")
-    // })
+async function uploadImage(imageURL, image, userID) {
+    // upload image to firebase storage, path as '/images/userID/image.filetype
+    // userID as unique user
+    const storage = getStorage();
+
+    // Create file metadata
+    const metadata = {
+        contentType: 'image/png' // png, jpg, etc
+    }
+
+    const storageRef = ref(storage, `images/1/` + image.name)
+    const uploadTask = uploadBytesResumable(storageRef, image, metadata);
+
+    // console.log("References: ", storageRef)
 }
-export { createUser, updateUserData, 
+
+
+export { createUserAccountObject, updateUserData, 
     addFollower, getFollowers, 
-    addPost, uploadImage }
+    addPost, createPost, uploadImage }
